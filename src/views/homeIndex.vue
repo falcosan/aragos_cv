@@ -1,10 +1,11 @@
 <template>
   <template v-for="story in stories" :key="story.id">
     <component
-      v-for="component in story.content.body"
+      v-for="(component, index) in story.content.body"
       :key="component._uid"
       :is="component.component"
       :blok="component"
+      :class="{ 'mb-10': index !== story.content.body.length - 1 }"
     />
   </template>
 </template>

@@ -9,7 +9,7 @@
       :blok="component"
       :class="[
         {
-          'w-72 sm:w-7/12 md:w-56 mx-auto md:mx-0 border-2 border-slate-700 rounded-xl transition transform hover:shadow-xl hover:scale-110':
+          'w-72 sm:w-7/12 md:w-56 mx-auto md:mx-0 border-2 rounded-xl transition transform hover:shadow-xl hover:scale-110 border-slate-700':
             component.component === 'media',
         },
       ]"
@@ -29,3 +29,19 @@ export default {
   },
 };
 </script>
+<style>
+[id*="hello"] {
+  animation: bounce 1s infinite;
+}
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(-25%);
+    animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+  }
+  50% {
+    transform: translateY(0);
+    animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+  }
+}
+</style>

@@ -1,12 +1,5 @@
 <template>
-  <Markdown
-    :class="`prose ${blok.center ? 'mx-auto' : 'max-w-none'}`"
-    :source="blok.text"
-    breaks
-    emoji
-    html
-    linkify
-  />
+  <Markdown class="prose" :source="blok.text" breaks emoji html linkify />
 </template>
 <script>
 import Markdown from "vue3-markdown-it";

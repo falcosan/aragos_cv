@@ -8,52 +8,22 @@
       <li
         v-for="(item, index) in blok.body"
         :key="index"
-        :class="{ 'flex items-start': item.drop_text }"
+        :class="`p-0 m-0 ${item.drop_text ? 'flex items-start' : 'list-none'}`"
       >
-        <Icon
-          v-if="item.drop_text"
-          class="mr-2.5 transition"
-          :class="{ 'transform rotate-90': showDropText }"
-          icon="bx:chevron-right"
-          width="30"
-          @click="toggleDropText(item)"
-        />
-        <div class="w-full" :class="{ 'flex flex-col': item.drop_text }">
-          <Markdown
-            :class="{ 'cursor-pointer': item.drop_text }"
-            :source="item.text"
-            @click="toggleDropText(item)"
-          />
-          <Markdown
-            v-if="item.drop_text && showDropText"
-            :source="item.drop_text"
-          />
-        </div>
+        <item :blok="item" />
       </li>
     </ul>
   </div>
 </template>
 <script>
-import { ref } from "vue";
-import Markdown from "vue3-markdown-it";
-import { Icon } from "@iconify/vue";
+import item from "./itemIndex.vue";
 export default {
-  components: { Markdown, Icon },
+  components: { item },
   props: {
     blok: {
       type: Object,
       required: true,
     },
-  },
-  setup() {
-    const showDropText = ref(false);
-    const toggleDropText = (item) => {
-      if (item.drop_text) showDropText.value = !showDropText.value;
-    };
-    return {
-      showDropText,
-      toggleDropText,
-    };
   },
 };
 </script>
