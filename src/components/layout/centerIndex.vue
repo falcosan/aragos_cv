@@ -1,16 +1,17 @@
 <template>
-  <component
-    v-for="component in blok.body"
-    :key="component._uid"
-    :is="component.component"
-    :blok="component"
-  />
+  <section>
+    <component
+      v-for="component in blok.body"
+      :key="component._uid"
+      :is="component.component"
+      :blok="component"
+    />
+  </section>
 </template>
 <script>
-import media from "../mediaIndex.vue";
-import paragraph from "../paragraphIndex.vue";
+import list from "../listIndex.vue";
 export default {
-  components: { media, paragraph },
+  components: { list },
   props: {
     blok: {
       type: Object,

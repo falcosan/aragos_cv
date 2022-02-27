@@ -1,5 +1,7 @@
 <template>
-  <RouterView />
+  <main class="min-h-full p-5 md:p-10 bg-lime-200">
+    <RouterView />
+  </main>
 </template>
 <script>
 import { useStoryblokApi } from "@storyblok/vue";

@@ -1,14 +1,12 @@
 <template>
-  <main class="h-full p-5 md:p-10 bg-lime-200">
-    <template v-for="story in stories" :key="story.id">
-      <component
-        v-for="component in story.content.body"
-        :key="component._uid"
-        :is="component.component"
-        :blok="component"
-      />
-    </template>
-  </main>
+  <template v-for="story in stories" :key="story.id">
+    <component
+      v-for="component in story.content.body"
+      :key="component._uid"
+      :is="component.component"
+      :blok="component"
+    />
+  </template>
 </template>
 <script>
 import top from "../components/layout/topIndex.vue";

@@ -1,10 +1,12 @@
 <template>
-  <component
-    v-for="component in blok.body"
-    :key="component._uid"
-    :is="component.component"
-    :blok="component"
-  />
+  <section>
+    <component
+      v-for="component in blok.body"
+      :key="component._uid"
+      :is="component.component"
+      :blok="component"
+    />
+  </section>
 </template>
 <script>
 import media from "../mediaIndex.vue";
