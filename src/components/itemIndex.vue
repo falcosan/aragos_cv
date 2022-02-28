@@ -1,42 +1,43 @@
 <template>
-  <li class="flex items-start">
-    <Icon
-      v-if="removeBackticks(blok.drop_text)"
-      class="flex-none mr-3 mt-1 transition"
-      :class="[
-        { 'transform rotate-90': showDropText },
-        {
-          'cursor-pointer': removeBackticks(blok.drop_text),
-        },
-      ]"
-      icon="bx:chevron-right"
-      width="20"
-      @click="toggleDropText(blok)"
-    />
+  <li>
     <div
-      :class="`pr-3 md:pr-5 ${
-        removeBackticks(blok.drop_text) ? 'flex items-start' : 'list-none'
+      :class="`${
+        removeBackticks(blok.drop_text) ? 'flex flex-col' : 'list-none'
       }`"
     >
       <div
         class="w-full"
         :class="{
-          'flex flex-col': removeBackticks(blok.drop_text),
+          'flex items-center': removeBackticks(blok.drop_text),
         }"
       >
+        <Icon
+          v-if="removeBackticks(blok.drop_text)"
+          class="mr-3 transition"
+          :class="[
+            { 'transform rotate-90': showDropText },
+            {
+              'cursor-pointer': removeBackticks(blok.drop_text),
+            },
+          ]"
+          icon="bx:chevron-right"
+          width="20"
+          @click="toggleDropText(blok)"
+        />
         <paragraph
           :class="{
             'cursor-pointer': removeBackticks(blok.drop_text),
           }"
-          :blok="blok.text"
+          :blok="blok"
           @click="toggleDropText(blok)"
         />
-        <paragraph
-          v-if="removeBackticks(blok.drop_text) && showDropText"
-          class="mt-3"
-          :blok="blok.drop_text"
-        />
       </div>
+      <paragraph
+        v-if="removeBackticks(blok.drop_text) && showDropText"
+        class="mt-3 pl-6 pr-2"
+        :blok="blok"
+        source="drop_text"
+      />
     </div>
   </li>
 </template>

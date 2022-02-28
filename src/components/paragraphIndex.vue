@@ -1,14 +1,14 @@
 <template>
   <div
     :class="[
-      { 'max-w-prose mx-auto': blok.center },
-      { 'rounded-md shadow-md bg-gray-50': blok.card },
+      { 'max-w-prose mx-auto': blok && blok.center },
+      { 'rounded-md shadow-md bg-gray-50': blok && blok.card },
     ]"
   >
     <Markdown
-      class="prose prose-ul:p-0"
-      :class="{ 'p-5': blok.card }"
-      :source="source"
+      class="markdown"
+      :class="{ 'p-5': blok && blok.card }"
+      :source="text"
       breaks
       emoji
       html
@@ -25,14 +25,20 @@ export default {
   },
   props: {
     blok: {
+      type: Object,
+      default: () => {},
+    },
+    source: {
       type: String,
-      required: true,
+      default: "text",
     },
   },
   setup(props) {
-    const source = computed(() => props.blok.replace(/` `/g, "</br>"));
+    const text = computed(() =>
+      props.blok[props.source].replace(/` `/g, "</br>")
+    );
     return {
-      source,
+      text,
     };
   },
 };
