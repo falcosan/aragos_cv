@@ -64,25 +64,6 @@
     .markdown img {
         cursor: pointer;
    }
-    .markdown-modal {
-        position: fixed;
-        width: 100%;
-        height: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        z-index: 50;
-        background-color: #e5e7ebe6;
-        cursor: url("data:image/svg+xml,%3Csvg width=\'24\' height=\'24\' xmlns=\'http://www.w3.org/2000/svg\' fill-rule=\'evenodd\' clip-rule=\'evenodd\'%3E%3Cpath d=\'M12 11.293l10.293-10.293.707.707-10.293 10.293 10.293 10.293-.707.707-10.293-10.293-10.293 10.293-.707-.707 10.293-10.293-10.293-10.293.707-.707 10.293 10.293z\'/%3E%3C/svg%3E") 32 32, pointer;
-   }
-    .markdown-modal > img {
-        height: 100%;
-        object-fit: contain;
-   }
     .markdown a {
         text-decoration: underline;
    }
@@ -107,16 +88,6 @@
         overflow: auto;
         color: #abb2bf;
         background-color: #282c34;
-   }
-    .markdown .syntax-code-block .code-language {
-        position: absolute;
-        width: 100%;
-        display: flex;
-        top: 0;
-        left: 0;
-        justify-content: flex-end;
-        padding-right: 10px;
-        font-size: 10px;
    }
     .markdown blockquote {
         position: relative;
@@ -164,18 +135,26 @@
    }
     .markdown ol {
         list-style: decimal outside;
+        padding-left: 20px;
+        padding-right: 10px;
    }
     .markdown ol ol {
         list-style: upper-alpha outside;
+        padding-left: 0;
+        padding-right: 0;
    }
     .markdown ol ol ol {
         list-style: lower-alpha outside;
    }
     .markdown ul {
         list-style: disc outside;
+        padding-left: 20px;
+        padding-right: 10px;
    }
     .markdown ul ul {
         list-style: circle outside;
+        padding-left: 0;
+        padding-right: 0;
    }
     .markdown ul ul ul {
         list-style: square outside;

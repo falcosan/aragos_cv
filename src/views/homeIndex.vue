@@ -1,6 +1,6 @@
 <template>
   <template v-for="story in stories" :key="story.id">
-    <main class="bg-lime-200" :style="`background-color: ${story.content.color.color}`">
+    <main :style="`background-color: ${story.content.color.color}`">
       <component
         v-for="component in story.content.body"
         :key="component._uid"

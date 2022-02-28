@@ -13,7 +13,7 @@
       >
         <Icon
           v-if="removeBackticks(blok.drop_text)"
-          class="mr-3 transition"
+          class="mr-2 transition"
           :class="[
             { 'transform rotate-90': showDropText },
             {
@@ -34,7 +34,7 @@
       </div>
       <paragraph
         v-if="removeBackticks(blok.drop_text) && showDropText"
-        class="pt-6 pl-6 pr-3"
+        class="pt-5"
         :blok="blok"
         source="drop_text"
       />
