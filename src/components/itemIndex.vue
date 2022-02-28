@@ -34,7 +34,7 @@
       </div>
       <paragraph
         v-if="removeBackticks(blok.drop_text) && showDropText"
-        class="mt-3 pl-6 pr-2"
+        class="pt-6 pl-6 pr-3"
         :blok="blok"
         source="drop_text"
       />

@@ -1,12 +1,14 @@
 <template>
   <template v-for="story in stories" :key="story.id">
-    <component
-      v-for="component in story.content.body"
-      :key="component._uid"
-      :is="component.component"
-      class="p-5 md:p-10"
-      :blok="component"
-    />
+    <main class="bg-lime-200" :style="`background-color: ${story.content.color.color}`">
+      <component
+        v-for="component in story.content.body"
+        :key="component._uid"
+        :is="component.component"
+        class="p-5 md:p-10"
+        :blok="component"
+      />
+    </main>
   </template>
 </template>
 <script>
