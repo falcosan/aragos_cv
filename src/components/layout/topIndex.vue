@@ -6,11 +6,11 @@
       v-for="component in blok.body"
       :key="component._uid"
       :is="component.component"
-      :blok="component"
+      :blok="unicSet(component.component, 'media') ? component : component.text"
       :class="[
         {
-          'w-72 sm:w-7/12 md:w-56 mx-auto md:mx-0 border-2 rounded-xl transition transform hover:shadow-xl hover:scale-110 border-slate-700':
-            component.component === 'media',
+          'w-72 h-72 md:h-56 md:w-56 mx-auto md:mx-0 border-2 rounded-xl transition transform select-none hover:shadow-xl hover:scale-110 border-slate-700':
+            unicSet(component.component, 'media'),
         },
       ]"
     />
@@ -21,6 +21,7 @@ import media from "../mediaIndex.vue";
 import paragraph from "../paragraphIndex.vue";
 export default {
   components: { media, paragraph },
+  inject: ["unicSet"],
   props: {
     blok: {
       type: Object,

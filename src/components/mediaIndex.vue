@@ -1,5 +1,5 @@
 <template>
-  <img :src="blok.media.filename" />
+  <img :src="blok.media.filename" draggable="false" />
 </template>
 <script>
 export default {

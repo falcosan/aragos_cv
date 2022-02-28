@@ -1,17 +1,20 @@
 <template>
   <div
-    class="prose prose-p:m-0 my-5 mx-auto rounded-md shadow-md bg-gray-50"
+    class="rounded-md shadow-md bg-gray-50"
     :class="{ 'max-w-prose mx-auto': blok.center }"
   >
     <span v-if="blok.title" class="block text-xl p-5" v-text="blok.title" />
-    <ul class="grid gap-y-5 p-5">
-      <li
-        v-for="(item, index) in blok.body"
-        :key="index"
-        :class="`p-0 m-0 ${item.drop_text ? 'flex items-start' : 'list-none'}`"
-      >
-        <item :blok="item" />
-      </li>
+    <ul
+      :class="`grid gap-y-5 ${
+        blok.body.some(
+          (item) =>
+            item.drop_text && !item.drop_text.replace(/\s/g, '') === '``'
+        )
+          ? 'px-3 py-5 md:px-5'
+          : 'p-5'
+      }`"
+    >
+      <item v-for="(item, index) in blok.body" :blok="item" :key="index" />
     </ul>
   </div>
 </template>

@@ -1,7 +1,8 @@
 <template>
-  <section>
+  <section class="flex flex-col space-y-5">
     <component
       v-for="component in blok.body"
+      class="w-full"
       :key="component._uid"
       :is="component.component"
       :blok="component"
