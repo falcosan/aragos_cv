@@ -1,7 +1,7 @@
 <template>
   <section
     v-if="blok.body.length > 0"
-    class="flex flex-col md:flex-row space-y-10 md:space-y-0 justify-between"
+    class="flex flex-col md:flex-row space-y-10 md:space-y-0 md:space-x-10 justify-between"
   >
     <component
       v-for="component in blok.body"

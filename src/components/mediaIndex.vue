@@ -1,5 +1,9 @@
 <template>
-  <img :src="blok.media.filename" draggable="false" />
+  <img
+    class="object-cover object-center"
+    :src="blok.media.filename"
+    draggable="false"
+  />
 </template>
 <script>
 export default {
