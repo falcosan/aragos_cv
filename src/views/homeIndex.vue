@@ -1,6 +1,6 @@
 <template>
   <template v-for="story in stories" :key="story.id">
-    <main :style="`background-color: ${story.content.color.color}`">
+    <main class="relative z-10">
       <component
         v-for="component in story.content.body"
         :key="component._uid"
@@ -9,6 +9,16 @@
         :blok="component"
       />
     </main>
+    <div
+      class="fixed inset-0 w-full h-full pointer-events-none"
+      :style="`background-color: ${story.content.color.color}`"
+    >
+      <div
+        v-if="story.content.background.filename"
+        class="w-full h-full"
+        :style="`background: url(${story.content.background.filename}) center center / cover no-repeat`"
+      />
+    </div>
   </template>
 </template>
 <script>

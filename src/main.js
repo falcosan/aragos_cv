@@ -11,4 +11,4 @@ app.provide("unicSet", Global.unicSet);
 app.provide("removeBackticks", Global.removeBackticks);
 app.use(router);
 app.use(StoryblokVue, StoryblokConfig);
-app.mount("#app");
+app.mount("#agostina_dimaio");
