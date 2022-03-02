@@ -1,5 +1,7 @@
 <template>
-  <div class="flex space-x-2.5 justify-center px-3 py-2 rounded-b-md">
+  <div
+    class="flex space-x-2.5 justify-end md:justify-center px-3 py-2 rounded-b-md"
+  >
     <span
       :class="`w-16 p-1 border border-gray-50 text-center shadow rounded-md cursor-pointer bg-gray-50 ${
         language === 'en' ? 'bg-opacity-100' : 'bg-opacity-50'

@@ -35,7 +35,7 @@ export default {
 };
 </script>
 <style>
-[id*="hello"] {
+.markdown > h1 {
   animation: bounce 1s infinite;
 }
 @keyframes bounce {
