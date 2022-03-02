@@ -28,7 +28,7 @@ import center from "../components/layout/centerIndex.vue";
 import bottom from "../components/layout/bottomIndex.vue";
 import translate from "../components/translateIndex.vue";
 import { useStoryblokApi } from "@storyblok/vue";
-import { ref, reactive, computed } from "vue";
+import { ref, computed } from "vue";
 export default {
   components: { top, center, bottom, translate },
   provide() {
@@ -38,37 +38,40 @@ export default {
   },
   setup() {
     const storyblok = useStoryblokApi();
-    const stories = reactive({
-      en: [],
-      es: [],
-    });
+    const stories = ref({});
     const language = ref(localStorage.getItem("lang") || "en");
     const token = import.meta.env.DEV
       ? import.meta.env.VITE_STORYBLOK_PREVIEW
       : import.meta.env.VITE_STORYBLOK_PUBLIC;
-    storyblok
-      .get("cdn/stories", {
-        language: language.value,
-      })
-      .then(({ data }) => {
-        stories[language.value] = data.stories;
-        fetch(
-          `https://api.storyblok.com/v1/cdn/spaces/me/?token=${token}`
-        ).then(async (res) => {
-          const { space } = await res.json();
-          const otherLang = ["en", ...space.language_codes].find(
-            (lang) => lang !== language.value
-          );
-          storyblok
-            .get("cdn/stories", {
-              language: otherLang,
-            })
-            .then(({ data }) => {
-              stories[otherLang] = data.stories;
+    fetch(`https://api.storyblok.com/v1/cdn/spaces/me/?token=${token}`).then(
+      async (res) => {
+        const { space } = await res.json();
+        stories.value = space.language_codes.reduce(
+          (acc, val) => {
+            acc[val] = {};
+            return acc;
+          },
+          { en: {} }
+        );
+        storyblok
+          .get("cdn/stories", {
+            language: language.value,
+          })
+          .then(({ data }) => {
+            stories.value[language.value] = data.stories;
+            Object.keys(stories.value).forEach((currentLang) => {
+              storyblok
+                .get("cdn/stories", {
+                  language: currentLang,
+                })
+                .then(({ data }) => {
+                  stories.value[currentLang] = data.stories;
+                });
             });
-        });
-      });
-    const setStories = computed(() => stories[language.value]);
+          });
+      }
+    );
+    const setStories = computed(() => stories.value[language.value]);
     return {
       language,
       setStories,
