@@ -48,10 +48,10 @@ export default {
         const { space } = await res.json();
         stories.value = space.language_codes.reduce(
           (acc, val) => {
-            acc[val] = {};
+            acc[val] = [];
             return acc;
           },
-          { en: {} }
+          { en: [] }
         );
         storyblok
           .get("cdn/stories", {
@@ -60,13 +60,15 @@ export default {
           .then(({ data }) => {
             stories.value[language.value] = data.stories;
             Object.keys(stories.value).forEach((currentLang) => {
-              storyblok
-                .get("cdn/stories", {
-                  language: currentLang,
-                })
-                .then(({ data }) => {
-                  stories.value[currentLang] = data.stories;
-                });
+              if (stories.value[currentLang].length === 0) {
+                storyblok
+                  .get("cdn/stories", {
+                    language: currentLang,
+                  })
+                  .then(({ data }) => {
+                    stories.value[currentLang] = data.stories;
+                  });
+              }
             });
           });
       }
