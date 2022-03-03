@@ -1,7 +1,7 @@
 <template>
   <section
     v-if="blok.body.length > 0"
-    class="max-w-prose flex flex-wrap justify-end mx-auto rounded-t-md"
+    class="bottom max-w-prose flex flex-wrap justify-end mx-auto rounded-t-md"
     :style="`background-color: ${blok.color.color}`"
   >
     <div class="flex flex-wrap items-center self-baseline -m-2.5">

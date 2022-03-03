@@ -1,5 +1,5 @@
 <template>
-  <section v-if="blok.body.length > 0" class="flex flex-col space-y-5">
+  <section v-if="blok.body.length > 0" class="center flex flex-col space-y-5">
     <component
       v-for="component in blok.body"
       class="w-full"

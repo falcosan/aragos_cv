@@ -42,9 +42,14 @@
 @tailwind utilities;
 @layer utilities {
     .markdown {
+        display: flex;
+        flex-direction: column;
         word-break: break-word;
         overflow-wrap: anywhere;
    }
+    .markdown > * {
+       align-self: flex-start;
+    }
     .markdown img, .markdown video, .markdown figure, .markdown img + .caption {
         display: grid;
         gap: 10px;
@@ -175,7 +180,7 @@
         max-width: 10rem;
    }
     .markdown > *:last-child {
-        margin: 0 auto;
+        margin: 0;
    }
     .markdown dd:not(:last-child), .markdown dt:not(:last-child), .markdown li:not(:last-child) {
         margin-bottom: 0.5rem;
