@@ -1,22 +1,25 @@
 <template>
   <section
     v-if="blok.body.length > 0"
-    class="bottom max-w-prose flex flex-wrap justify-end mx-auto rounded-t-md"
+    class="bottom max-w-prose flex flex-wrap mx-auto rounded-t-md"
     :style="`background-color: ${blok.color.color}`"
   >
-    <div class="flex flex-wrap items-center self-baseline -m-2.5">
-      <component
-        v-for="component in blok.body"
-        :key="component._uid"
-        :is="component.component"
-        :blok="component"
-        class="mx-2.5"
-        :class="[
-          {
-            'h-full': unicSet(component.component, 'media'),
-          },
-        ]"
-      />
+    <div class="w-full h-full flex flex-wrap justify-center items-center -m-2">
+      <span class="m-2" v-text="`© ${currentYear} - Agostina Dimaio`" />
+      <div class="flex flex-wrap justify-center items-center">
+        <component
+          v-for="component in blok.body"
+          :key="component._uid"
+          :is="component.component"
+          :blok="component"
+          class="m-2"
+          :class="[
+            {
+              'h-full': unicSet(component.component, 'media'),
+            },
+          ]"
+        />
+      </div>
     </div>
   </section>
 </template>
@@ -40,7 +43,9 @@ export default {
         else return comp.component === componentName;
       });
     };
+    const currentYear = new Date().getFullYear();
     return {
+      currentYear,
       filterComponent,
     };
   },
