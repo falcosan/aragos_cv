@@ -13,7 +13,7 @@
       >
         <Icon
           v-if="removeBackticks(blok.drop_text)"
-          class="mr-2 transition"
+          class="flex-none mr-2 transition"
           :class="[
             { 'transform rotate-90': showDropText },
             {
@@ -22,6 +22,7 @@
           ]"
           icon="bx:chevron-right"
           width="20"
+          height="20"
           @click="toggleDropText(blok)"
         />
         <paragraph
