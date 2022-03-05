@@ -4,8 +4,7 @@
     class="bottom max-w-prose flex flex-wrap mx-auto rounded-t-md"
     :style="`background-color: ${blok.color.color}`"
   >
-    <div class="w-full h-full flex flex-wrap justify-center items-center -m-2">
-      <span class="m-2" v-text="`© ${currentYear} - Agostina Dimaio`" />
+    <div class="w-full h-full flex flex-col justify-center items-center -m-2">
       <div class="flex flex-wrap justify-center items-center">
         <component
           v-for="component in blok.body"
@@ -20,6 +19,10 @@
           ]"
         />
       </div>
+      <span
+        class="m-2 text-center"
+        v-text="`© ${currentYear} - Agostina Dimaio`"
+      />
     </div>
   </section>
 </template>
