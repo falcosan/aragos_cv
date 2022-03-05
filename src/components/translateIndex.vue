@@ -1,18 +1,18 @@
 <template>
   <div class="flex space-x-2.5 justify-end md:justify-center p-5 rounded-b-md">
     <span
-      :class="`w-16 p-1 border border-gray-50 text-center shadow rounded-md cursor-pointer bg-gray-50 ${
+      :class="`w-16 p-2 border text-center text-xs shadow rounded-md cursor-pointer bg-gray-50 ${
         language === 'en' ? 'bg-opacity-100' : 'bg-opacity-50'
       }`"
       @click="setLang('en')"
-      >En</span
+      >ENG</span
     >
     <span
-      :class="`w-16 p-1 border border-gray-50 text-center shadow rounded-md cursor-pointer bg-gray-50 ${
+      :class="`w-16 p-2 border text-center text-xs shadow rounded-md cursor-pointer bg-gray-50 ${
         language === 'es' ? 'bg-opacity-100' : 'bg-opacity-50'
       }`"
       @click="setLang('es')"
-      >Es</span
+      >ESP</span
     >
   </div>
 </template>
