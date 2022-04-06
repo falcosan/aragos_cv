@@ -14,15 +14,31 @@
         :blok="item"
         :key="index"
         :class="[
-          { 'border-b': index !== blok.body.length - 1 },
-          { 'pb-5': index === 0 && blok.body.length > 1 },
-          { 'pt-5': index === blok.body.length - 1 && blok.body.length > 1 },
+          {
+            'border-b':
+              index !== blok.body.length - 1 &&
+              !removeBackticks(item.drop_text),
+          },
+          {
+            'pb-5':
+              index === 0 &&
+              blok.body.length > 1 &&
+              !removeBackticks(item.drop_text),
+          },
+          {
+            'pt-5':
+              index === blok.body.length - 1 &&
+              blok.body.length > 1 &&
+              !removeBackticks(item.drop_text),
+          },
           {
             'py-5':
               index !== blok.body.length - 1 &&
               index !== 0 &&
-              blok.body.length > 1,
+              blok.body.length > 1 &&
+              !removeBackticks(item.drop_text),
           },
+          'transition-colors hover:bg-gray-200',
         ]"
       />
     </ul>
