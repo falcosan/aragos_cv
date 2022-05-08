@@ -5,7 +5,7 @@ import vue from "@vitejs/plugin-vue";
 import viteCompression from "vite-plugin-compression";
 
 export default defineConfig({
-  plugins: [vue(), viteCompression({ deleteOriginFile: true })],
+  plugins: [vue(), viteCompression()],
   resolve: {
     alias: {
       "@": fileURLToPath(new URL("./src", import.meta.url)),
