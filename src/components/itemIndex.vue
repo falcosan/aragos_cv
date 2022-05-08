@@ -5,14 +5,14 @@
     >
       <div
         :class="[
-          'w-full p-5',
+          'relative w-full z-10 p-5',
           {
             'flex flex-col-reverse md:flex-row rounded-t transition cursor-pointer':
               removeBackticks(blok.drop_text),
           },
           {
             [showDropText
-              ? 'relative z-10 hover:shadow-slate-300 hover:shadow bg-slate-200'
+              ? 'shadow shadow-slate-300 bg-slate-200'
               : 'hover:bg-slate-100 rounded-b']: removeBackticks(
               blok.drop_text
             ),
@@ -38,15 +38,15 @@
       </div>
       <transition
         enter-active-class="duration-150 ease-out"
-        enter-from-class="transform opacity-0"
+        enter-from-class="transform opacity-0 -translate-y-1/2"
         enter-to-class="opacity-100"
         leave-active-class="duration-150 ease-in"
         leave-from-class="opacity-100"
-        leave-to-class="transform opacity-0"
+        leave-to-class="transform opacity-0 -translate-y-1/2"
       >
         <paragraph
           v-if="removeBackticks(blok.drop_text) && showDropText"
-          class="p-5 rounded-b bg-slate-200"
+          class="p-5 rounded-b shadow-inner bg-slate-200"
           :blok="blok"
           source="drop_text"
         />
