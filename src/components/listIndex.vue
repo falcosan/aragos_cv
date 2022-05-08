@@ -15,30 +15,20 @@
         :key="index"
         :class="[
           {
-            'border-b':
+            'border-b mb-5':
               index !== blok.body.length - 1 &&
               !removeBackticks(item.drop_text),
           },
           {
             'pb-5':
-              index === 0 &&
+              (index === 0 || index !== blok.body.length - 1) &&
               blok.body.length > 1 &&
               !removeBackticks(item.drop_text),
           },
           {
-            'pt-5':
-              index === blok.body.length - 1 &&
-              blok.body.length > 1 &&
-              !removeBackticks(item.drop_text),
+            'mb-5':
+              index !== blok.body.length - 1 && removeBackticks(item.drop_text),
           },
-          {
-            'py-5':
-              index !== blok.body.length - 1 &&
-              index !== 0 &&
-              blok.body.length > 1 &&
-              !removeBackticks(item.drop_text),
-          },
-          'transition-colors hover:bg-gray-200',
         ]"
       />
     </ul>

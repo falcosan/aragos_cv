@@ -20,7 +20,7 @@
         />
       </div>
       <span
-        class="m-2 text-center"
+        class="m-2 text-center text-sm"
         v-text="`© ${currentYear} - Agostina Dimaio`"
       />
     </div>
