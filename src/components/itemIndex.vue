@@ -1,24 +1,28 @@
 <template>
   <li>
     <div
-      :class="`${
-        removeBackticks(blok.drop_text) ? 'flex flex-col' : 'list-none'
-      }`"
+      :class="[removeBackticks(blok.drop_text) ? 'flex flex-col' : 'list-none']"
     >
       <div
-        class="w-full"
-        :class="{
-          'flex items-center': removeBackticks(blok.drop_text),
-        }"
+        :class="[
+          'w-full p-5',
+          {
+            'flex items-center rounded-t transition cursor-pointer':
+              removeBackticks(blok.drop_text),
+          },
+          {
+            [showDropText
+              ? 'relative z-10 hover:shadow-gray-300 hover:shadow-md bg-gray-200'
+              : 'hover:bg-gray-100 rounded-b']: removeBackticks(blok.drop_text),
+          },
+        ]"
+        @click="toggleDropText(blok)"
       >
         <Icon
           v-if="removeBackticks(blok.drop_text)"
-          class="mr-2 transition"
           :class="[
+            'flex-none mr-5 transition',
             { 'transform rotate-90': showDropText },
-            {
-              'cursor-pointer': removeBackticks(blok.drop_text),
-            },
           ]"
           icon="bx:chevron-right"
           width="20"
@@ -29,15 +33,23 @@
             'cursor-pointer': removeBackticks(blok.drop_text),
           }"
           :blok="blok"
-          @click="toggleDropText(blok)"
         />
       </div>
-      <paragraph
-        v-if="removeBackticks(blok.drop_text) && showDropText"
-        class="pt-5"
-        :blok="blok"
-        source="drop_text"
-      />
+      <transition
+        enter-active-class="duration-150 ease-out"
+        enter-from-class="transform opacity-0"
+        enter-to-class="opacity-100"
+        leave-active-class="duration-150 ease-in"
+        leave-from-class="opacity-100"
+        leave-to-class="transform opacity-0"
+      >
+        <paragraph
+          v-if="removeBackticks(blok.drop_text) && showDropText"
+          class="p-5 rounded-b bg-gray-200"
+          :blok="blok"
+          source="drop_text"
+        />
+      </transition>
     </div>
   </li>
 </template>

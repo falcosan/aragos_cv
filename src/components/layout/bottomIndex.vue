@@ -4,7 +4,7 @@
     class="bottom max-w-prose flex flex-wrap justify-end mx-auto rounded-t-md"
     :style="`background-color: ${blok.color.color}`"
   >
-    <div class="flex flex-wrap items-center self-baseline -m-2.5">
+    <div class="flex flex-wrap items-center self-baseline">
       <component
         v-for="component in blok.body"
         :key="component._uid"
