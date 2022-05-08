@@ -7,7 +7,7 @@
         :class="[
           'w-full p-5',
           {
-            'flex flex-col-reverse md:flex-row items-center rounded-t transition cursor-pointer':
+            'flex flex-col-reverse md:flex-row rounded-t transition cursor-pointer':
               removeBackticks(blok.drop_text),
           },
           {
@@ -23,12 +23,11 @@
         <Icon
           v-if="removeBackticks(blok.drop_text)"
           :class="[
-            'flex-none mr-0 mt-5 md:mt-0 md:mr-5 transform transition',
+            'flex-none self-center mr-0 mt-5 md:mt-0 md:mr-5 transform transition',
             showDropText ? '-rotate-90 md:rotate-90' : 'rotate-90 md:rotate-0',
           ]"
           icon="bx:chevron-right"
           width="20"
-          @click="toggleDropText(blok)"
         />
         <paragraph
           :class="{
