@@ -12,8 +12,10 @@
           },
           {
             [showDropText
-              ? 'relative z-10 hover:shadow-gray-300 hover:shadow-md bg-gray-200'
-              : 'hover:bg-gray-100 rounded-b']: removeBackticks(blok.drop_text),
+              ? 'relative z-10 hover:shadow-slate-300 hover:shadow bg-slate-200'
+              : 'hover:bg-slate-100 rounded-b']: removeBackticks(
+              blok.drop_text
+            ),
           },
         ]"
         @click="toggleDropText(blok)"
@@ -45,7 +47,7 @@
       >
         <paragraph
           v-if="removeBackticks(blok.drop_text) && showDropText"
-          class="p-5 rounded-b bg-gray-200"
+          class="p-5 rounded-b bg-slate-200"
           :blok="blok"
           source="drop_text"
         />
