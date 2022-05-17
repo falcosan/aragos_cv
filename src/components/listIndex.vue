@@ -8,7 +8,7 @@
       class="block p-5 font-semibold text-xl"
       v-text="blok.title"
     />
-    <ul class="p-5">
+    <ul class="px-5 pb-5">
       <item
         v-for="(item, index) in blok.body"
         :blok="item"

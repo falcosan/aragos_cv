@@ -5,7 +5,8 @@
     >
       <div
         :class="[
-          'relative w-full z-10 p-5',
+          'relative w-full z-10 px-5 pt-5',
+          { 'py-5': blok.drop_text },
           {
             'flex flex-col-reverse md:flex-row rounded-t transition cursor-pointer':
               removeBackticks(blok.drop_text),
