@@ -2,7 +2,7 @@
   <RouterView />
 </template>
 <script>
-import { ref, computed } from "vue";
+import { ref, computed, watch } from "vue";
 import { StoryblokToken } from "./api/storyblok";
 import { useStoryblokApi } from "@storyblok/vue";
 export default {
@@ -18,7 +18,9 @@ export default {
   setup() {
     const StoryblokApi = useStoryblokApi();
     const stories = ref({});
-    const language = ref(localStorage.getItem("lang") || "en");
+    const language = ref(
+      localStorage.getItem("lang") || document.documentElement.lang
+    );
     fetch(
       `https://api.storyblok.com/v1/cdn/spaces/me/?token=${StoryblokToken}`
     ).then(async (res) => {
@@ -45,6 +47,13 @@ export default {
         });
       });
     });
+    watch(
+      () => language.value,
+      (val) => {
+        document.documentElement.setAttribute("lang", val);
+      },
+      { immediate: true }
+    );
     return {
       stories,
       language,
