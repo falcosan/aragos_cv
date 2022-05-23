@@ -37,6 +37,10 @@
         line-height: 1.775;
         font-weight: 600;
    }
+   hr, .hr {
+    border: 0;
+    border-bottom: 4px dotted #aac775;
+   }
 }
 @tailwind components;
 @tailwind utilities;
@@ -172,12 +176,6 @@
    }
     .markdown p {
         margin-top: 0;
-   }
-    .markdown hr {
-        border: 0;
-        margin: 2rem auto;
-        border-top: 1px solid #e5e7eb;
-        max-width: 10rem;
    }
     .markdown > *:last-child {
         margin: 0;

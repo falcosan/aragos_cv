@@ -6,7 +6,7 @@
       <div
         :class="[
           'relative w-full z-10 px-5 pt-5',
-          { 'py-5': blok.drop_text },
+          { 'py-5': removeBackticks(blok.drop_text) },
           {
             'flex flex-col-reverse md:flex-row rounded-t transition cursor-pointer':
               removeBackticks(blok.drop_text),
@@ -34,6 +34,7 @@
           :class="{
             'cursor-pointer': removeBackticks(blok.drop_text),
           }"
+          :style="`color: ${blok.color?.color}`"
           :blok="blok"
         />
       </div>
@@ -48,6 +49,7 @@
         <paragraph
           v-if="removeBackticks(blok.drop_text) && showDropText"
           class="p-5 rounded-b shadow-inner bg-slate-200"
+          :style="`color: ${blok.color?.color}`"
           :blok="blok"
           source="drop_text"
         />

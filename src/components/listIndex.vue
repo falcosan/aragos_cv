@@ -1,11 +1,15 @@
 <template>
   <div
-    class="rounded-md shadow-md bg-gray-50"
-    :class="{ 'max-w-prose mx-auto': blok.center }"
+    :class="[
+      'overflow-hidden rounded-md shadow-md',
+      { 'bg-gray-50': !blok.list_color.color },
+      { 'max-w-prose mx-auto': blok.center },
+    ]"
   >
     <span
       v-if="blok.title"
       class="block p-5 font-semibold text-xl"
+      :style="`background-color: ${blok.title_color.color}`"
       v-text="blok.title"
     />
     <ul class="px-5 pb-5">
@@ -15,7 +19,7 @@
         :key="index"
         :class="[
           {
-            'border-b mb-5':
+            'hr mb-5':
               index !== blok.body.length - 1 &&
               !removeBackticks(item.drop_text),
           },
