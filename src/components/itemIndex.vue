@@ -5,20 +5,19 @@
     >
       <div
         :class="[
-          'relative w-full z-10 px-5 pt-5',
-          { 'py-5': removeBackticks(blok.drop_text) },
+          'relative w-full z-10 px-5',
           {
-            'flex flex-col-reverse md:flex-row rounded-t transition cursor-pointer':
+            'flex flex-col-reverse py-5 md:flex-row rounded-t transition cursor-pointer ':
               removeBackticks(blok.drop_text),
           },
           {
-            [showDropText
-              ? 'shadow shadow-slate-300 bg-slate-200'
-              : 'hover:bg-slate-100 rounded-b']: removeBackticks(
+            [showDropText ? 'appear' : 'disappear rounded-b']: removeBackticks(
               blok.drop_text
             ),
           },
         ]"
+        @[ev.mouseEnter]="hover = true"
+        @[ev.mouseLeave]="hover = false"
         @click="toggleDropText(blok)"
       >
         <Icon
@@ -26,6 +25,10 @@
           :class="[
             'flex-none self-center mr-0 mt-5 md:mt-0 md:mr-5 transform transition',
             showDropText ? '-rotate-90 md:rotate-90' : 'rotate-90 md:rotate-0',
+            {
+              'text-white':
+                (hover || showDropText) && color && themeColor(color),
+            },
           ]"
           icon="bx:chevron-right"
           width="20"
@@ -34,8 +37,9 @@
           :class="{
             'cursor-pointer': removeBackticks(blok.drop_text),
           }"
-          :style="`color: ${blok.color?.color}`"
+          :style="`color: ${blok.color.color}`"
           :blok="blok"
+          :color="hover || showDropText ? color : ''"
         />
       </div>
       <transition
@@ -48,9 +52,10 @@
       >
         <paragraph
           v-if="removeBackticks(blok.drop_text) && showDropText"
-          class="p-5 rounded-b shadow-inner bg-slate-200"
-          :style="`color: ${blok.color?.color}`"
+          class="inner-appear p-5 rounded-b shadow-inner"
+          :style="`color: ${blok.color.color}`"
           :blok="blok"
+          :color="color"
           source="drop_text"
         />
       </transition>
@@ -58,30 +63,58 @@
   </li>
 </template>
 <script>
-import { ref, inject } from "vue";
+import { ref, inject, computed } from "vue";
 import { Icon } from "@iconify/vue";
 import paragraph from "./paragraphIndex.vue";
 export default {
   components: { Icon, paragraph },
+  inject: ["themeColor"],
   props: {
     blok: {
       type: Object,
       required: true,
     },
+    color: {
+      type: String,
+      default: "",
+    },
   },
-  setup() {
+  setup(props) {
     const removeBackticks = inject("removeBackticks");
+    const hover = ref(false);
     const showDropText = ref(false);
     const toggleDropText = (item) => {
       if (removeBackticks(item.drop_text)) {
         showDropText.value = !showDropText.value;
       }
     };
+    const ev = computed(() => ({
+      mouseEnter: removeBackticks(props.blok.drop_text) ? "mouseenter" : null,
+      mouseLeave: removeBackticks(props.blok.drop_text) ? "mouseleave" : null,
+    }));
     return {
+      ev,
+      hover,
       showDropText,
       toggleDropText,
       removeBackticks,
+      outerColor: props.color,
     };
   },
 };
 </script>
+<style>
+.appear {
+  background-color: v-bind(outerColor);
+  box-shadow: 0px 2px 3px 0px v-bind(outerColor);
+}
+.appear:hover {
+  background-color: v-bind(outerColor + "CC");
+}
+.disappear:hover {
+  background-color: v-bind(outerColor);
+}
+.inner-appear {
+  background-color: v-bind(outerColor + "A5");
+}
+</style>

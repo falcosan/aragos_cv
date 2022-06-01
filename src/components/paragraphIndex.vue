@@ -6,8 +6,11 @@
     ]"
   >
     <Markdown
-      class="markdown"
-      :class="{ 'p-5': blok && blok.card }"
+      :class="[
+        'markdown',
+        { 'p-5': blok && blok.card },
+        { 'text-white': color && themeColor(color) },
+      ]"
       :source="text"
       breaks
       emoji
@@ -23,6 +26,7 @@ export default {
   components: {
     Markdown,
   },
+  inject: ["themeColor"],
   props: {
     blok: {
       type: Object,
@@ -31,6 +35,10 @@ export default {
     source: {
       type: String,
       default: "text",
+    },
+    color: {
+      type: String,
+      default: "",
     },
   },
   setup(props) {

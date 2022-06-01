@@ -12,16 +12,17 @@
         'block p-5 font-semibold text-xl',
         {
           'text-white':
-            blok.title_color.color && themeColor(blok.title_color.color),
+            blok.content_color.color && themeColor(blok.content_color.color),
         },
       ]"
-      :style="`background-color: ${blok.title_color.color}`"
+      :style="`background-color: ${blok.content_color.color}`"
       v-text="blok.title"
     />
-    <ul class="px-5 pb-5">
+    <ul class="p-5">
       <item
         v-for="(item, index) in blok.body"
         :blok="item"
+        :color="blok.content_color.color"
         :key="index"
         :class="[
           {
