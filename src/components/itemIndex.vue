@@ -7,7 +7,7 @@
         :class="[
           'relative w-full z-10 px-5',
           {
-            'flex flex-col-reverse py-5 md:flex-row rounded-t transition cursor-pointer ':
+            'flex flex-col-reverse py-5 md:flex-row rounded-t transition cursor-pointer':
               removeBackticks(blok.drop_text),
           },
           {
