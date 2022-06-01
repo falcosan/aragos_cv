@@ -8,7 +8,13 @@
   >
     <span
       v-if="blok.title"
-      class="block p-5 font-semibold text-xl"
+      :class="[
+        'block p-5 font-semibold text-xl',
+        {
+          'text-white':
+            blok.title_color.color && themeColor(blok.title_color.color),
+        },
+      ]"
       :style="`background-color: ${blok.title_color.color}`"
       v-text="blok.title"
     />
@@ -42,7 +48,7 @@
 import item from "./itemIndex.vue";
 export default {
   components: { item },
-  inject: ["removeBackticks"],
+  inject: ["removeBackticks", "themeColor"],
   props: {
     blok: {
       type: Object,

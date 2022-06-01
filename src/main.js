@@ -9,6 +9,7 @@ import "./assets/index.css";
 const app = createApp(App);
 app.provide("unicSet", Global.unicSet);
 app.provide("removeBackticks", Global.removeBackticks);
+app.provide("themeColor", Global.themeColor);
 app.use(router);
 app.use(StoryblokVue, StoryblokConfig);
 app.mount("#agostina_dimaio");
