@@ -29,6 +29,7 @@ import bottom from "../components/layout/bottomIndex.vue";
 import translate from "../components/translateIndex.vue";
 import { inject } from "vue";
 export default {
+  // eslint-disable-next-line vue/no-reserved-component-names
   components: { top, center, bottom, translate },
   setup() {
     const stories = inject("stories");
